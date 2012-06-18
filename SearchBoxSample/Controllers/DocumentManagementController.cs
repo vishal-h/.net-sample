@@ -92,8 +92,8 @@ namespace SearchBoxSample.Controllers
                 client.DeleteIndex("sample");
             }
 
-            // Create a new "documents" index with default settings
-            client.CreateIndex("documents", new IndexSettings());
+            // Create a new "sample" index with default settings
+            client.CreateIndex("sample", new IndexSettings());
 
             // Index all documents
             client.Index<Document>(documents);
