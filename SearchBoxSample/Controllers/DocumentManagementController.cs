@@ -86,7 +86,6 @@ namespace SearchBoxSample.Controllers
             var client = new ElasticClient(settings);
 
             // delete index if exists at startup
-
             if (client.IndexExists("sample").Exists)
             {
                 client.DeleteIndex("sample");
@@ -120,7 +119,6 @@ namespace SearchBoxSample.Controllers
             else
             {
                 client.Index(document, "sample", "documents", document.DocumentId);
-
             }
         }
     }

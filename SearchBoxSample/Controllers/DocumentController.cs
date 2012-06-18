@@ -39,7 +39,7 @@ namespace SearchBoxSample.Controllers
                     var uriString = ConfigurationManager.AppSettings["SEARCHBOX_URL"];
                     var searchBoxUri = new Uri(uriString);
                     var settings = new ConnectionSettings(searchBoxUri);
-                    settings.SetDefaultIndex("documents");
+                    settings.SetDefaultIndex("sample");
                     return new ElasticClient(settings);
                 }
                 catch (Exception)
