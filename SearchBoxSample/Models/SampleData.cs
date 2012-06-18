@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace SearchBoxSample.Models
 {
-    public class SampleData : CreateDatabaseIfNotExists<SampleEntities>
+    public class SampleData : DropCreateDatabaseAlways<SampleEntities>
     {
         protected override void Seed(SampleEntities context)
         {
