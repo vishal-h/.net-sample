@@ -81,15 +81,15 @@ namespace SearchBoxSample.Controllers
             var searchBoxUri = new Uri(uriString);
 
             var settings = new ConnectionSettings(searchBoxUri);
-            settings.SetDefaultIndex("documents");
+            settings.SetDefaultIndex("sample");
 
             var client = new ElasticClient(settings);
 
             // delete index if exists at startup
 
-            if (client.IndexExists("documents").Exists)
+            if (client.IndexExists("sample").Exists)
             {
-                client.DeleteIndex("documents");
+                client.DeleteIndex("sample");
             }
 
             // Create a new "documents" index with default settings
@@ -109,17 +109,17 @@ namespace SearchBoxSample.Controllers
             var searchBoxUri = new Uri(uriString);
             
             var settings = new ConnectionSettings(searchBoxUri);
-            settings.SetDefaultIndex("documents");
+            settings.SetDefaultIndex("sample");
 
             var client = new ElasticClient(settings);
 
             if (operation.Equals("delete"))
             {
-                client.DeleteById<Document>(document.DocumentId);
+                client.DeleteById("sample", "documents", document.DocumentId);
             }
             else
             {
-                client.Index<Document>(document, "documents", "document", document.DocumentId);
+                client.Index(document, "sample", "documents", document.DocumentId);
 
             }
         }
