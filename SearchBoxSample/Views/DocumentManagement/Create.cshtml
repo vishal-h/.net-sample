@@ -1,0 +1,37 @@
+﻿@model SearchBoxSample.Models.Document
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<div class="page-header">
+    <h1>
+        Create New Document<small> - It will be indexed by SearchBox.io after created in real time.</small></h1>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="control-group">
+            <label for="Name" class="control-label">Name</label>
+            <div class="controls">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="Text" class="control-label">Text</label>
+            <div class="controls">
+                @Html.TextAreaFor(model => model.Text, new { @style = "width: 600px; height: 200px;" })
+                @Html.ValidationMessageFor(model => model.Text)
+            </div>
+        </div>
+        <div class="form-actions">
+            <input class="btn btn-primary" type="submit" value="Create" />
+             @Html.ActionLink("Back", "Index", null, new { @class = "btn" })
+        </div>
+    </fieldset>
+}

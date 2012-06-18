@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SearchBoxSample.Models.Document>
+@{  
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="span12">
+        <div class="hero-unit">
+            <h1>
+                SearchBox.io Sample .NET Application.</h1>
+                <br/>
+            <p>
+                This example illustrates basic search features of SearchBox.io (ElasticSearch as
+                service).</p>
+            <p>
+                Each CRUD operation on documents is reflected to search index in real time.</p>
+            <p>
+                To test SearchBox.io's search features navigate to Manage Documents, create a new
+                document and search it.</p>
+            <p>
+                When sample application first runs, it will provide initial documents to database.
+                You can click "Reindex All" at Manage Documents view to index all documents in database. It will delete old index if exists, 
+                create a new index and it will index all documents at database with Bulk API in one request.</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <h2>
+            Top 3 documents;</h2>
+    </div>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="span4">
+            <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+            <p>
+                @Html.DisplayFor(modelItem => item.Text)
+            </p>
+        </div>
+    }
+</div>

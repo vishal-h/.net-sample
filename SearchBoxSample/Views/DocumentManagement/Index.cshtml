@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SearchBoxSample.Models.Document>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header">
+    <h1>
+        All Documents</h1>
+</div>
+<div class="row">
+    <div class="span12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Text
+                    </th>
+                    <th colspan="2">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Text)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId }, new { onclick = "return confirm('Are you sure ?');" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="span2">
+        <p>@Html.ActionLink("New Document", "Create", null, new { @class = "btn btn-small btn-primary" })</p>
+    </div>
+    <div class="span2">
+        <p>@Html.ActionLink("Reindex All", "Create", null, new { @class = "btn btn-small btn-primary", onclick = "return confirm('Are you sure want to reindex your documents ?');" })</p>
+    </div>
+</div>
