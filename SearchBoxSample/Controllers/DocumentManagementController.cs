@@ -5,10 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using SearchBoxSample.Models;
 using System.Data;
+using Nest;
+using System.Configuration;
 
 namespace SearchBoxSample.Controllers
 {
-   
+
     public class DocumentManagementController : Controller
     {
 
@@ -19,7 +21,7 @@ namespace SearchBoxSample.Controllers
 
         public ActionResult Index()
         {
-            var documents = db.Documents.ToList(); ;
+            var documents = db.Documents.ToList();
             return View(documents);
         }
 
@@ -35,6 +37,7 @@ namespace SearchBoxSample.Controllers
             {
                 db.Documents.Add(document);
                 db.SaveChanges();
+                Index(document, "create");
                 return RedirectToAction("Index");
             }
             return View(document);
@@ -54,6 +57,7 @@ namespace SearchBoxSample.Controllers
             {
                 db.Entry(document).State = EntityState.Modified;
                 db.SaveChanges();
+                Index(document, "update");
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +69,58 @@ namespace SearchBoxSample.Controllers
             Document document = db.Documents.Find(id);
             db.Documents.Remove(document);
             db.SaveChanges();
+            Index(document, "delete");
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ReIndexAll()
+        {
+            var documents = db.Documents.ToList();
+            
+            var uriString = ConfigurationManager.AppSettings["SEARCHBOX_URL"];
+            var searchBoxUri = new Uri(uriString);
+
+            var settings = new ConnectionSettings(searchBoxUri);
+            settings.SetDefaultIndex("documents");
+
+            var client = new ElasticClient(settings);
+
+            // delete index if exists at startup
+
+            if (client.IndexExists("documents").Exists)
+            {
+                client.DeleteIndex("documents");
+            }
+
+            // Create a new "documents" index with default settings
+            client.CreateIndex("documents", new IndexSettings());
+
+            // Index all documents
+            client.Index<Document>(documents);
+
+            ViewBag.Message = "Reindexing all database is complete!";
+
+            return RedirectToAction("Index");
+        }
+
+        private static void Index(Document document, String operation)
+        {
+            var uriString = ConfigurationManager.AppSettings["SEARCHBOX_URL"];
+            var searchBoxUri = new Uri(uriString);
+            
+            var settings = new ConnectionSettings(searchBoxUri);
+            settings.SetDefaultIndex("documents");
+
+            var client = new ElasticClient(settings);
+
+            if (operation.Equals("delete"))
+            {
+                client.DeleteById<Document>(document.DocumentId);
+            }
+            else
+            {
+                client.Index<Document>(document);
+            }
         }
     }
 }
