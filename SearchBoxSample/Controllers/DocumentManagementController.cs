@@ -76,7 +76,7 @@ namespace SearchBoxSample.Controllers
         public ActionResult ReIndexAll()
         {
             var documents = db.Documents.ToList();
-            
+
             var uriString = ConfigurationManager.AppSettings["SEARCHBOX_URL"];
             var searchBoxUri = new Uri(uriString);
 
@@ -106,7 +106,7 @@ namespace SearchBoxSample.Controllers
         {
             var uriString = ConfigurationManager.AppSettings["SEARCHBOX_URL"];
             var searchBoxUri = new Uri(uriString);
-            
+
             var settings = new ConnectionSettings(searchBoxUri);
             settings.SetDefaultIndex("sample");
 
@@ -114,7 +114,7 @@ namespace SearchBoxSample.Controllers
 
             if (operation.Equals("delete"))
             {
-                client.DeleteById("sample", "documents", document.DocumentId);
+                ConnectionStatus status = client.DeleteById("sample", "documents", document.DocumentId);
             }
             else
             {
