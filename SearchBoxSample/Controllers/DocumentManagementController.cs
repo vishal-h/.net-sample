@@ -119,7 +119,8 @@ namespace SearchBoxSample.Controllers
             }
             else
             {
-                client.Index<Document>(document);
+                client.Index<Document>(document, "documents", "document", document.DocumentId);
+
             }
         }
     }

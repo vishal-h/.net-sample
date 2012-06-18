@@ -33,10 +33,9 @@ namespace SearchBoxSample
 
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-
             System.Data.Entity.Database.SetInitializer(new SampleData());
 
+            AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }
