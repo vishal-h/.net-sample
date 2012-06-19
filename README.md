@@ -22,7 +22,7 @@ Also change connection string to use SqlServerCe
     <add name="SampleEntities" connectionString="data source=.\SQLEXPRESS;Data Source=|DataDirectory|aspnetdb.mdf" providerName="System.Data.SqlServerCe.4.0" />
 
 
-## Appharbor Deployment
+## AppHarbor Deployment
 
 This sample can be deployed to Appharbor with no change. With 2 steps application will be fully functional.
 
