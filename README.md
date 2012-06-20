@@ -26,7 +26,7 @@ Also change connection string to use SqlServerCe
 
 This sample can be deployed to Appharbor with no change. With 2 steps application will be fully functional.
 
-* Install SQL Addon and create `Documents` table with fields `DocumentId`(int), `Name`(nvarchar), `Text`(nvarchar).
+* Install SQL Addon and go to the SQL Server add-on to specify `SampleEntities` as the alias.
 
 * Install SearchBox ElasticSearch Addon.
 
