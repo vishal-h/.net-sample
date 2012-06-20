@@ -1,4 +1,9 @@
-﻿[Bb]in
 [Oo]bj
+[Bb]in
+deploy
+deploy/*
+*.csproj.user
 *.suo
-*.user
+*.cache
+TestResults/
+packages/
