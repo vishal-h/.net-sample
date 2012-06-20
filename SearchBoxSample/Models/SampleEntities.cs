@@ -6,4 +6,3 @@ namespace SearchBoxSample.Models
         public DbSet<Document> Documents { get; set; }
     }
 }
-
