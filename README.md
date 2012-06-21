@@ -28,6 +28,6 @@ This sample can be deployed to Appharbor with no change. With 2 steps applicatio
 
 * Install SQL Addon and go to the SQL Server add-on to specify `SampleEntities` as the alias.
 
-* Install SearchBox ElasticSearch Addon.
+* Install SearchBox ElasticSearch Addon ( Either create an index named "sample" from dashboard of SearchBox.io or click "Reindex All" to create initial index ).
 
 Deploy sample application and experience real time search.
