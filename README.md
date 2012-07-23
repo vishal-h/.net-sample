@@ -6,7 +6,7 @@ Each CRUD operation on documents is reflected to search index in real time.
 
 To test SearchBox.io's search features navigate to Manage Documents, create a new document and search it.
 
-When sample application first runs, it will provide initial documents to database. You can click "Reindex All" at Manage Documents view to index all documents in database. It will delete old index if exists, create a new index and it will index all documents at database with Bulk API in one request.
+You can click "Reindex All" at Manage Documents view to index all documents in database. It will delete old index if exists, create a new index and it will index all documents at database with Bulk API in one request.
 
 Sample application is using [NEST](https://github.com/Mpdreamz/NEST) .NET ElasticSearch client to integrate with SearchBox.io.
 
@@ -28,6 +28,6 @@ This sample can be deployed to Appharbor with no change. With 2 steps applicatio
 
 * Install SQL Addon and go to the SQL Server add-on to specify `SampleEntities` as the alias.
 
-* Install SearchBox ElasticSearch Addon ( Either create an index named "sample" from dashboard of SearchBox.io or click "Reindex All" to create initial index ).
+* Install SearchBox ElasticSearch Addon.
 
-Deploy sample application and experience real time search.
+Deploy sample application, create some records and experience real time search.
