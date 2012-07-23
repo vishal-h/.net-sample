@@ -17,10 +17,9 @@
                 To test SearchBox.io's search features navigate to Manage Documents, create a new
                 document and search it.</p>
             <p>
-                When sample application first runs, it will provide initial documents to database.
                 You can click "Reindex All" at Manage Documents view to index all documents in database.
                 It will delete old index if exists, create a new index and it will index all documents
-                at database with Bulk API in one request.</p>
+                at database with Bulk API in one request (Consider implementing paging over bulk request for datasets larger then 5K-10K).</p>
             <p>
                 Sample application is using <a href="https://github.com/Mpdreamz/NEST">NEST</a> .NET ElasticSearch client to integrate with SearchBox.io.</p>
         </div>
