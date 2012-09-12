@@ -1,4 +1,5 @@
-﻿## SearchBox.io Sample .NET Application.
+﻿Build : 12/9/12
+﻿# SearchBox.io Sample .NET Application.
 
 This example illustrates basic search features of SearchBox.io ([ElasticSearch](http://www.elasticsearch.org) as service).
 
